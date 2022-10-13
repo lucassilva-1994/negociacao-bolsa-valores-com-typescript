@@ -19,7 +19,7 @@ export class NegociacoesView extends View {
                                 <td>${negociacao.valor}</td>
                             </tr>
                         `;
-        }).join('')};
+        }).join('')}
                 </tbody>
             </table>
         `;
