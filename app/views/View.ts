@@ -2,12 +2,12 @@ export abstract class View<T> {
     protected elemento: HTMLElement;
     private escape = false;
     constructor(seletor:string, escape?: boolean){
-        this.elemento = document.querySelector(seletor);
+        this.elemento = <HTMLInputElement>document.querySelector(seletor);
         if(escape){
             this.escape = escape;
         }
     }
-    
+
     public update(model: T): void{
         let  template = this.template(model);
         if(this.escape){
