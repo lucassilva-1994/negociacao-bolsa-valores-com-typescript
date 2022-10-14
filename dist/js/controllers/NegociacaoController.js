@@ -6,7 +6,7 @@ import { DiasDaSemana } from "../enums/DiasDaSemana.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
-        this.negociacoesView = new NegociacoesView("#negociacoesView");
+        this.negociacoesView = new NegociacoesView("#negociacoesView", true);
         this.mensagemView = new MensagemView("#mensagemView");
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
@@ -35,7 +35,6 @@ export class NegociacaoController {
         this.inputData.focus();
     }
     atualizaView() {
-        //Após adicionar uma nova negociação será chamado o método para atualizar a view
         this.negociacoesView.update(this.negociacoes);
         this.mensagemView.update("Negociação adicionada com sucesso.");
     }
