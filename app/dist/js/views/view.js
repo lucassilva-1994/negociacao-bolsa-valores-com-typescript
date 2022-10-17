@@ -1,3 +1,10 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+import { tempoDeExecucao } from "../decorators/TempoDeExecucao.js";
 export class View {
     constructor(seletor, escape) {
         this.escape = false;
@@ -13,14 +20,14 @@ export class View {
         }
     }
     update(model) {
-        const time01 = performance.now();
         let template = this.template(model);
         if (this.escape) {
             template = template
                 .replace(/<script>[\s\S]*?<\/script>/, '');
         }
         this.elemento.innerHTML = template;
-        const time02 = performance.now();
-        console.log(`O tempo de execução do método update é ${(time02 - time01) / 1000} segundos.`);
     }
 }
+__decorate([
+    tempoDeExecucao()
+], View.prototype, "update", null);

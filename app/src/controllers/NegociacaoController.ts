@@ -22,7 +22,6 @@ export class NegociacaoController {
 
     @tempoDeExecucao()
     public adiciona(): void {
-        const time01 = performance.now();
         const negociacao = Negociacao.criaNegociacao(
             this.inputData.value, 
             this.inputQuantidade.value,
@@ -31,15 +30,13 @@ export class NegociacaoController {
      
         if (!this.diaUtil(negociacao.data)) {
             this.mensagemView
-                .update('Apenas negociações em dias úteis são aceitas');
+                .update('Apenas negociações em dias úteis são aceitas.');
             return ;
         }
 
         this.negociacoes.adiciona(negociacao);
         this.limparFormulario();
         this.atualizaView();
-        const time02 = performance.now();
-        console.log(`O tempo de execução do método adiciona é de ${(time02-time01)/1000} segundos.`);
     }
 
     private diaUtil(data: Date) {

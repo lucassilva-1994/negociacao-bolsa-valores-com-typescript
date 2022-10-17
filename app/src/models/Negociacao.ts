@@ -16,9 +16,9 @@ export class Negociacao {
 
     public static criaNegociacao(dataString: string, quantidadeString: string, valorString: string): Negociacao {
         const exp = /-/g;
-        const date = new Date(dataString.replace(exp, ','));
+        const data = new Date(dataString.replace(exp, ','));
         const quantidade = parseInt(quantidadeString);
         const valor = parseFloat(valorString);
-        return new Negociacao(date, quantidade, valor);
+        return new Negociacao(data, quantidade, valor);
     }
 }
